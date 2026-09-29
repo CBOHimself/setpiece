@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-GH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#023662" />
+    <title>Under maintenance | Set Piece</title>
+    <style>
+      :root {
+        --navy: #023662;
+        --blue: #005295;
+        --cyan: #1fcad4;
+        --canvas: #f4f7f8;
+        --muted: #3e5870;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+        padding: 1.5rem;
+        background:
+          radial-gradient(circle at top left, rgb(31 202 212 / 22%), transparent 42%),
+          var(--canvas);
+        color: var(--navy);
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        font-size: 1.0625rem;
+        line-height: 1.6;
+      }
+
+      main {
+        width: min(100%, 36rem);
+        padding: 2rem 1.5rem;
+        border: 1px solid #d5e3ea;
+        border-radius: 0.75rem;
+        background: #fff;
+      }
+
+      img {
+        display: block;
+        width: min(100%, 16.5rem);
+        height: auto;
+      }
+
+      p.eyebrow {
+        margin: 1.75rem 0 0;
+        color: var(--blue);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0.5rem 0 0;
+        font-size: clamp(1.75rem, 4vw, 2.25rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+
+      p {
+        margin: 1rem 0 0;
+        color: var(--muted);
+      }
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.25rem;
+        margin: 1.5rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      a {
+        color: var(--navy);
+        font-weight: 600;
+      }
+
+      a:focus-visible {
+        outline: 2px solid var(--navy);
+        outline-offset: 3px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img
+        src="/images/setpiece-logo.png"
+        alt="Set Piece"
+        width="1197"
+        height="291"
+      />
+      <p class="eyebrow">Under maintenance</p>
+      <h1>We'll be back shortly</h1>
+      <!-- Keep the contact details in sync with src/config/site.ts -->
+      <p>
+        Set Piece is briefly unavailable while we carry out maintenance. Please
+        try again in a little while.
+      </p>
+      <p>If you need a quote now, email or call us and we will reply as soon as we can.</p>
+      <ul>
+        <li>
+          <a href="mailto:hello@setpiecegh.com">hello@setpiecegh.com</a>
+        </li>
+        <li>
+          <a href="tel:+233000000000">+233 00 000 0000</a>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>

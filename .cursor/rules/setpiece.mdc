@@ -1,0 +1,15 @@
+---
+description: Set Piece project conventions for the marketing site
+alwaysApply: true
+---
+
+# Set Piece
+
+- TypeScript is strict. Do not use `any`.
+- Use functional components.
+- Style with Tailwind utilities only. No inline styles and no CSS modules.
+- All marketing content comes from `src/config/` and `src/data/`.
+- Keep components small.
+- Build mobile-first.
+- Accessible by default: real labels, keyboard support, visible focus, and semantic landmarks.
+- This is a static site for Namecheap. Do not add a cart, CMS, auth, blog, or a Node server in production.
