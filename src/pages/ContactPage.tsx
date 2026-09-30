@@ -1,133 +1,116 @@
-import { Clock, Mail, MapPin, Phone } from 'lucide-react'
+import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import { useSearchParams } from 'react-router-dom'
 import { formatAddress, siteConfig } from '@/config/site'
 import { products } from '@/data/products'
 import { ContactForm } from '@/components/contact/ContactForm'
-import { SocialLinks } from '@/components/contact/SocialLinks'
-import { WhatsAppButton } from '@/components/contact/WhatsAppButton'
 import { Seo } from '@/components/seo/Seo'
-import { Card } from '@/components/ui/Card'
 import { Container } from '@/components/ui/Container'
-import { Section } from '@/components/ui/Section'
+
+function Bars() {
+  return (
+    <div className="four-bars">
+      <span className="bg-brand-800" />
+      <span className="bg-brand-500" />
+      <span className="bg-accent-600" />
+      <span className="bg-accent-500" />
+    </div>
+  )
+}
 
 export function ContactPage() {
-  const [searchParams] = useSearchParams()
-  const productSlug = searchParams.get('product') ?? ''
-  const product = products.find((item) => item.slug === productSlug)
-
+  const [params] = useSearchParams()
+  const product = products.find((p) => p.slug === params.get('product'))
   return (
     <>
-      {/* TODO(content): replace the contact introduction */}
       <Seo
-        title="Contact | Set Piece"
-        description="Request a quote from Set Piece or reach the team by email, phone, or WhatsApp."
+        title="Contact | Setpiece"
+        description="Contact Setpiece."
         path="/contact"
       />
-      <Section
-        headingLevel="h1"
-        eyebrow="Contact"
-        title="Contact us"
-        intro="Send an enquiry for pricing and availability. A person on the team will reply."
-      >
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,0.8fr)]">
-          <Card>
-            {product ? (
-              <p className="text-muted mb-5 text-sm">
-                Enquiring about{' '}
-                <span className="text-brand-800 font-medium">
-                  {product.name}
-                </span>
-                .
-              </p>
-            ) : null}
-            <ContactForm
-              key={product?.slug ?? 'general'}
-              initialCategory={product?.category ?? ''}
-              initialMessage={
-                product ? `I would like a quote for ${product.name}.` : ''
-              }
-            />
-          </Card>
-          <aside className="space-y-6">
-            <Card>
-              <h2 className="text-brand-800 text-lg font-semibold">
+      <section className="py-14">
+        <Container>
+          <p className="eyebrow">Contact</p>
+          <h1 className="section-title mt-4 text-4xl lg:text-[56px]">
+            Let’s talk about care.
+          </h1>
+          <p className="text-muted mt-5 max-w-2xl text-lg">
+            Tell us what you need and a person from our team will reply.
+          </p>
+          <Bars />
+          <div className="mt-12 grid gap-6 lg:grid-cols-[1.2fr_.8fr]">
+            <div className="border-brand-100 rounded-[28px] border bg-white p-6 lg:p-9">
+              {product && (
+                <p className="bg-brand-50 text-muted mb-5 rounded-full px-4 py-2 text-[16px]">
+                  Enquiring about{' '}
+                  <strong className="text-brand-800">{product.name}</strong>
+                </p>
+              )}
+              <ContactForm
+                key={product?.slug ?? 'general'}
+                initialCategory={product?.category ?? ''}
+                initialMessage={
+                  product ? `I would like a quote for ${product.name}.` : ''
+                }
+              />
+            </div>
+            <aside className="bg-brand-800 rounded-[28px] p-8 text-white">
+              <p className="eyebrow !text-accent-500 before:!bg-accent-500">
                 Contact details
+              </p>
+              <h2 className="mt-5 text-3xl text-white">
+                Here when you need us.
               </h2>
-              <ul className="mt-4 space-y-3 text-sm">
+              <ul className="mt-8 space-y-5 text-[17px] text-white/80">
                 <li className="flex gap-3">
-                  <Mail
-                    aria-hidden="true"
-                    className="text-accent-700 mt-0.5 size-4 shrink-0"
-                  />
-                  <a
-                    className="text-brand-800 break-all underline"
-                    href={`mailto:${siteConfig.email}`}
-                  >
-                    {siteConfig.email}
-                  </a>
-                </li>
-                <li className="flex gap-3">
-                  <Phone
-                    aria-hidden="true"
-                    className="text-accent-700 mt-0.5 size-4 shrink-0"
-                  />
-                  <a
-                    className="text-brand-800 underline"
-                    href={`tel:${siteConfig.phoneTel}`}
-                  >
+                  <Phone className="text-accent-500 mt-1 size-5" />
+                  <a href={`tel:${siteConfig.phoneTel}`}>
                     {siteConfig.phoneDisplay}
                   </a>
                 </li>
                 <li className="flex gap-3">
-                  <MapPin
-                    aria-hidden="true"
-                    className="text-accent-700 mt-0.5 size-4 shrink-0"
-                  />
-                  <span>{formatAddress()}</span>
+                  <Mail className="text-accent-500 mt-1 size-5" />
+                  <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
                 </li>
                 <li className="flex gap-3">
-                  <Clock
-                    aria-hidden="true"
-                    className="text-accent-700 mt-0.5 size-4 shrink-0"
-                  />
-                  <span>{siteConfig.hoursDisplay}</span>
+                  <MapPin className="text-accent-500 mt-1 size-5" />
+                  {formatAddress()}
+                </li>
+                <li className="flex gap-3">
+                  <Clock className="text-accent-500 mt-1 size-5" />
+                  {siteConfig.hoursDisplay}
                 </li>
               </ul>
-              <div className="mt-5">
-                <WhatsAppButton />
+              <a
+                href={`https://wa.me/${siteConfig.whatsapp}`}
+                className="bg-accent-500 text-brand-800 mt-9 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-5 text-[17px] font-bold"
+              >
+                <MessageCircle className="size-5" />
+                Chat on WhatsApp
+              </a>
+              <div className="mt-7 flex gap-3">
+                <span className="flex size-11 items-center justify-center rounded-full bg-white/10">
+                  in
+                </span>
+                <span className="flex size-11 items-center justify-center rounded-full bg-white/10">
+                  f
+                </span>
               </div>
-            </Card>
-            <Card>
-              <h2 className="text-brand-800 text-lg font-semibold">Social</h2>
-              <div className="mt-3">
-                <SocialLinks />
-              </div>
-            </Card>
-          </aside>
-        </div>
-      </Section>
-
-      <section className="pb-16" aria-labelledby="map-heading">
+            </aside>
+          </div>
+        </Container>
+      </section>
+      <section className="pb-12">
         <Container>
-          <h2
-            id="map-heading"
-            className="text-brand-800 text-2xl font-semibold"
-          >
-            Location
-          </h2>
-          <div className="mt-4 overflow-hidden rounded-lg border border-neutral-200 bg-neutral-100">
-            {/* TODO: embed the warehouse map iframe once the address is confirmed.
-                <iframe
-                  title="Set Piece location"
-                  src=""
-                  className="h-72 w-full border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-            */}
-            <p className="text-muted px-6 py-16 text-center text-sm">
-              Map embed will appear here.
-            </p>
+          <div className="bg-brand-50 min-h-72 overflow-hidden rounded-[28px] p-8">
+            <div className="border-brand-100 flex h-full min-h-56 items-center justify-center rounded-[22px] border bg-white text-center">
+              <div>
+                <MapPin className="text-accent-600 mx-auto size-8" />
+                <p className="text-brand-800 mt-3 text-lg font-bold">
+                  Setpiece, Accra
+                </p>
+                <p className="text-muted mt-1 text-[16px]">Map placeholder</p>
+              </div>
+            </div>
           </div>
         </Container>
       </section>

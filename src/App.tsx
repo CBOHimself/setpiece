@@ -36,6 +36,7 @@ export function App() {
         <Route path="about" element={<AboutPage />} />
         <Route path="faq" element={<FaqPage />} />
         <Route path="contact" element={<ContactPage />} />
+        <Route path="components" element={<NotFoundPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

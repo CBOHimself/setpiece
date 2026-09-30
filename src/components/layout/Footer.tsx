@@ -1,87 +1,84 @@
 import { Link } from 'react-router-dom'
-import { formatAddress, getSocialLinks, siteConfig } from '@/config/site'
-import { navLinks } from '@/data/nav'
+import { Mail, MapPin, Phone, AtSign, MessageCircle } from 'lucide-react'
 import { Logo } from '@/components/layout/Logo'
 import { Container } from '@/components/ui/Container'
 
-const year = new Date().getFullYear()
-
 export function Footer() {
-  const socials = getSocialLinks()
-
   return (
-    <footer className="bg-brand-900 text-brand-50">
-      <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-3">
-        <div>
-          <Logo className="h-9 rounded-md bg-white px-2 py-1 sm:h-10" />
-          <p className="text-brand-100 mt-3 max-w-sm text-sm">
-            {siteConfig.tagline}
-          </p>
-        </div>
-        <div>
-          <h2 className="text-sm font-semibold tracking-wide text-white uppercase">
-            Contact
-          </h2>
-          <ul className="text-brand-100 mt-3 space-y-2 text-sm">
-            <li>
-              <a
-                className="break-all underline-offset-2 hover:underline"
-                href={`mailto:${siteConfig.email}`}
-              >
-                {siteConfig.email}
-              </a>
-            </li>
-            <li>
-              <a
-                className="underline-offset-2 hover:underline"
-                href={`tel:${siteConfig.phoneTel}`}
-              >
-                {siteConfig.phoneDisplay}
-              </a>
-            </li>
-            <li>{formatAddress()}</li>
-            <li>{siteConfig.hoursDisplay}</li>
-          </ul>
-        </div>
-        <div>
-          <h2 className="text-sm font-semibold tracking-wide text-white uppercase">
-            Quick links
-          </h2>
-          <ul className="mt-3 space-y-2 text-sm">
-            {navLinks.map((link) => (
-              <li key={link.to}>
-                <Link
-                  className="text-brand-100 underline-offset-2 hover:underline"
-                  to={link.to}
-                >
-                  {link.label}
-                </Link>
+    <footer className="px-4 pt-12 pb-4 sm:px-6">
+      <div className="bg-sp-navy mx-auto max-w-[1344px] rounded-sp-panel text-white">
+        <Container className="grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-[1.2fr_.8fr_.8fr_1fr]">
+          <div>
+            <div className="inline-block rounded-md bg-white px-2 py-2">
+              <Logo alt="Setpiece" className="h-8 sm:h-9" />
+            </div>
+            <p className="text-sp-cyan mt-5 text-lg">
+              Your Healthcare Partner
+            </p>
+            <p className="mt-4 max-w-xs text-[16px] text-white/75">
+              Compassionate, practical support for people and the teams who care
+              for them.
+            </p>
+          </div>
+          <div>
+            <h2 className="text-lg text-white">Explore</h2>
+            <ul className="mt-4 space-y-3 text-[16px] text-white/75">
+              <li>
+                <Link to="/products">Care Areas</Link>
               </li>
-            ))}
-          </ul>
-          {socials.length > 0 ? (
-            <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-              {socials.map((social) => (
-                <li key={social.label}>
-                  <a
-                    className="text-brand-100 underline-offset-2 hover:underline"
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {social.label}
-                    <span className="sr-only"> (opens in a new tab)</span>
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link to="/about">About Setpiece</Link>
+              </li>
+              <li>
+                <Link to="/faq">Frequently asked questions</Link>
+              </li>
             </ul>
-          ) : null}
-        </div>
-      </Container>
-      <div className="border-t border-white/10">
-        <Container className="text-brand-200 py-4 text-sm">
-          © {year} {siteConfig.name}. All rights reserved.
+          </div>
+          <div>
+            <h2 className="text-lg text-white">Get in touch</h2>
+            <ul className="mt-4 space-y-3 text-[16px] text-white/75">
+              <li className="flex gap-2">
+                <Mail className="text-sp-cyan mt-1 size-4" />
+                hello@setpiecegh.com
+              </li>
+              <li className="flex gap-2">
+                <Phone className="text-sp-cyan mt-1 size-4" />
+                +233 00 000 0000
+              </li>
+              <li className="flex gap-2">
+                <MapPin className="text-sp-cyan mt-1 size-4" />
+                Accra, Ghana
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-lg text-white">Stay connected</h2>
+            <div className="mt-4 flex gap-3">
+              <a
+                className="flex size-11 items-center justify-center rounded-full bg-white/10"
+                href="#contact"
+                aria-label="Email us"
+              >
+                <AtSign className="size-5" />
+              </a>
+              <a
+                className="flex size-11 items-center justify-center rounded-full bg-white/10"
+                href="#contact"
+                aria-label="Message us"
+              >
+                <MessageCircle className="size-5" />
+              </a>
+            </div>
+            <p className="mt-8 text-[15px] text-white/65">
+              Authorised distributor of Coloplast
+            </p>
+          </div>
         </Container>
+        <div className="border-t border-white/15">
+          <Container className="py-4 text-[14px] text-white/60">
+            © {new Date().getFullYear()} Setpiece. All rights reserved.
+          </Container>
+        </div>
       </div>
     </footer>
   )

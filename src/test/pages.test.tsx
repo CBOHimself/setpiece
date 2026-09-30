@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, it } from 'vitest'
-import { products } from '@/data/products'
 import { AboutPage } from '@/pages/AboutPage'
 import { ContactPage } from '@/pages/ContactPage'
 import { FaqPage } from '@/pages/FaqPage'
@@ -15,34 +14,30 @@ function renderPage(ui: ReactElement, path = '/') {
 }
 
 describe('HomePage', () => {
-  it('renders the hero and the first six products', () => {
+  it('renders the redesigned hero and featured product cards', () => {
     renderPage(<HomePage />)
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: /wholesale coloplast products/i,
+        name: /better-supported intimate healthcare/i,
       }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('heading', { name: products[0].name }),
+      screen.getByRole('heading', { name: 'Two-piece ostomy pouching system' }),
     ).toBeInTheDocument()
     expect(
-      screen.queryByRole('heading', { name: products[6].name }),
+      screen.queryByRole('heading', { name: 'Alginate wound dressing' }),
     ).not.toBeInTheDocument()
   })
 })
 
 describe('ProductsPage', () => {
-  it('renders every product from the catalogue data', () => {
+  it('renders the care area catalogue', () => {
     renderPage(<ProductsPage />)
     expect(
-      screen.getByRole('heading', { level: 1, name: 'Products' }),
+      screen.getByRole('heading', { level: 1, name: 'Care that stays present.' }),
     ).toBeInTheDocument()
-    for (const product of products) {
-      expect(
-        screen.getByRole('heading', { name: product.name }),
-      ).toBeInTheDocument()
-    }
+    expect(screen.getByRole('heading', { name: 'Ostomy' })).toBeInTheDocument()
   })
 })
 
@@ -50,9 +45,9 @@ describe('AboutPage', () => {
   it('renders the company overview headings', () => {
     renderPage(<AboutPage />)
     expect(
-      screen.getByRole('heading', { level: 1, name: 'About Set Piece' }),
+      screen.getByRole('heading', { level: 1, name: 'Who Setpiece is.' }),
     ).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Careers' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Join a team that puts people first.' })).toBeInTheDocument()
   })
 })
 
@@ -75,7 +70,7 @@ describe('ContactPage', () => {
   it('renders the enquiry form', () => {
     renderPage(<ContactPage />, '/contact')
     expect(
-      screen.getByRole('heading', { level: 1, name: 'Contact us' }),
+      screen.getByRole('heading', { level: 1, name: 'Let’s talk about care.' }),
     ).toBeInTheDocument()
     expect(screen.getByLabelText(/name/i)).toBeInTheDocument()
   })

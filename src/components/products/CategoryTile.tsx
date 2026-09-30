@@ -12,16 +12,16 @@ export function CategoryTile({ category }: CategoryTileProps) {
   return (
     <Link
       to={`/products#${category.slug}`}
-      className="bg-surface hover:border-brand-300 flex h-full flex-col rounded-lg border border-neutral-200 p-6"
+      className="flex h-full min-h-64 flex-col rounded-sp-card border border-sp-border bg-white p-6 transition-transform hover:-translate-y-1 hover:border-sp-teal"
     >
-      <Icon aria-hidden="true" className="text-accent-700 size-6" />
-      <h3 className="text-brand-800 mt-4 text-lg font-semibold">
+      <span className="flex size-12 items-center justify-center rounded-full bg-sp-tint"><Icon aria-hidden="true" className="text-sp-teal size-6" /></span>
+      <h3 className="text-sp-navy mt-4 text-lg font-semibold">
         {category.name}
       </h3>
       <p className="text-muted mt-2 flex-1 text-sm">
         {category.shortDescription}
       </p>
-      <span className="text-brand-800 mt-4 text-sm font-medium">
+      <span className="text-sp-blue mt-4 text-sm font-medium">
         View products
       </span>
     </Link>

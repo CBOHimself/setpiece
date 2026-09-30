@@ -13,22 +13,28 @@ type AccordionProps = {
 }
 
 export function Accordion({ items }: AccordionProps) {
-  const [openId, setOpenId] = useState<string | null>(null)
+  const [openId, setOpenId] = useState<string | null>(items[0]?.id ?? null)
   const baseId = useId()
 
   return (
-    <div className="bg-surface divide-y divide-neutral-200 rounded-lg border border-neutral-200">
+    <div className="divide-sp-border overflow-hidden rounded-sp-card border border-sp-border bg-white">
       {items.map((item) => {
         const open = openId === item.id
         const buttonId = `${baseId}-${item.id}-button`
         const panelId = `${baseId}-${item.id}-panel`
         return (
           <div key={item.id}>
-            <h3>
+            <h3
+              className={
+                open
+                  ? 'relative before:absolute before:bottom-0 before:left-5 before:h-2 before:w-12 before:rounded-full before:bg-sp-teal'
+                  : ''
+              }
+            >
               <button
                 id={buttonId}
                 type="button"
-                className="text-brand-900 flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-base font-medium"
+                className="flex min-h-16 w-full items-center justify-between gap-4 px-6 py-5 text-left text-[17px] font-bold text-sp-navy"
                 aria-expanded={open}
                 aria-controls={panelId}
                 onClick={() => setOpenId(open ? null : item.id)}
@@ -37,7 +43,7 @@ export function Accordion({ items }: AccordionProps) {
                 <ChevronDown
                   aria-hidden="true"
                   className={cn(
-                    'text-brand-700 size-5 shrink-0 motion-safe:transition-transform',
+                    'size-9 shrink-0 rounded-full bg-sp-tint p-2 text-sp-navy motion-safe:transition-transform',
                     open && 'rotate-180',
                   )}
                 />
@@ -49,7 +55,7 @@ export function Accordion({ items }: AccordionProps) {
               aria-labelledby={buttonId}
               hidden={!open}
             >
-              <p className="text-muted px-5 pb-5">{item.answer}</p>
+              <p className="px-6 pb-7 text-[17px] text-sp-muted">{item.answer}</p>
             </div>
           </div>
         )

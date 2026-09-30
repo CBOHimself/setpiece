@@ -7,6 +7,7 @@ import { Suspense } from 'react'
 
 export function Layout() {
   const { pathname, hash } = useLocation()
+  const isRecoveryPage = !['/', '/products', '/about', '/faq', '/contact', '/components'].includes(pathname)
 
   useEffect(() => {
     if (hash) return
@@ -21,13 +22,13 @@ export function Layout() {
       >
         Skip to content
       </a>
-      <Header />
+      {!isRecoveryPage ? <Header /> : null}
       <main id="main" tabIndex={-1} className="flex-1 outline-none">
         <Suspense fallback={<PageFallback />}>
           <Outlet />
         </Suspense>
       </main>
-      <Footer />
+      {!isRecoveryPage ? <Footer /> : null}
     </div>
   )
 }

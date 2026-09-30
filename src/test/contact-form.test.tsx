@@ -80,7 +80,7 @@ describe('Contact form', () => {
       json: async () => ({ ok: true }),
     } as Response)
 
-    expect(await screen.findByRole('status')).toHaveTextContent('Enquiry sent')
+    expect(await screen.findByRole('status')).toHaveTextContent('Thank you, we will be in touch')
     const body = JSON.parse(sentBody) as { phone: string }
     expect(body.phone).toBe('+233240000000')
     expect(fetchMock).toHaveBeenCalledOnce()

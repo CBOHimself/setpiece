@@ -1,116 +1,71 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
-import { siteConfig } from '@/config/site'
-import { navLinks } from '@/data/nav'
+import { Link } from 'react-router-dom'
 import { Logo } from '@/components/layout/Logo'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
-import { cn } from '@/lib/cn'
+
+const links = [
+  ['/products', 'Care Areas'],
+  ['/about', 'About'],
+  ['/faq', 'FAQ'],
+  ['/contact', 'Contact'],
+]
 
 export function Header() {
-  const { pathname } = useLocation()
-  const [openPath, setOpenPath] = useState<string | null>(null)
-  const toggleRef = useRef<HTMLButtonElement>(null)
-  const open = openPath === pathname
-
-  useEffect(() => {
-    if (!open) return
-    const firstLink = document.querySelector<HTMLAnchorElement>('#mobile-nav a')
-    firstLink?.focus()
-  }, [open])
-
-  useEffect(() => {
-    if (!open) return
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key !== 'Escape') return
-      setOpenPath(null)
-      toggleRef.current?.focus()
-    }
-    document.addEventListener('keydown', onKeyDown)
-    return () => document.removeEventListener('keydown', onKeyDown)
-  }, [open])
-
+  const [open, setOpen] = useState(false)
   return (
-    <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur">
-      <Container>
-        <div className="flex flex-wrap items-center gap-3 py-3">
-          <Link
-            to="/"
-            className="mr-auto flex min-w-0 items-center gap-2"
-            aria-label={`${siteConfig.name} home`}
-          >
-            <Logo alt="" />
-          </Link>
-          <nav
-            aria-label="Primary"
-            className="hidden items-center gap-6 md:flex"
-          >
-            {navLinks.map((link) => {
-              const current = pathname === link.to
-              return (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  aria-current={current ? 'page' : undefined}
-                  className={cn(
-                    'hover:text-brand-800 text-sm font-medium text-neutral-700',
-                    current && 'text-brand-800',
-                  )}
-                >
-                  {link.label}
-                </Link>
-              )
-            })}
-          </nav>
-          <div className="flex items-center gap-2">
-            <Button to="/contact" size="sm">
+    <header className="sticky top-0 z-40 h-20 border-b border-sp-border bg-white/95 backdrop-blur">
+      <Container className="flex h-full items-center">
+        <Link to="/" className="mr-auto" aria-label="Setpiece home">
+          <Logo alt="Setpiece" className="h-8 sm:h-10" />
+        </Link>
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+          {links.map(([to, label]) => (
+            <Link
+              key={to}
+              to={to}
+              className="text-sp-navy hover:text-sp-blue text-[16px] font-bold"
+            >
+              {label}
+            </Link>
+          ))}
+          <Button to="/contact" size="sm">
+            Request a Quote
+          </Button>
+        </nav>
+        <button
+          className="text-sp-navy inline-flex size-12 items-center justify-center rounded-full lg:hidden"
+          onClick={() => setOpen(!open)}
+          aria-expanded={open}
+          aria-label="Toggle menu"
+        >
+          {open ? <X /> : <Menu />}
+        </button>
+      </Container>
+      {open && (
+        <div className="bg-sp-navy fixed inset-0 top-20 z-50 px-6 py-10 lg:hidden">
+          <nav className="flex flex-col gap-5" aria-label="Mobile">
+            {links.map(([to, label]) => (
+              <Link
+                key={to}
+                to={to}
+                onClick={() => setOpen(false)}
+                className="font-display border-b border-white/15 py-3 text-3xl font-bold text-white"
+              >
+                {label}
+              </Link>
+            ))}
+            <Button
+              to="/contact"
+              variant="primary-on-dark"
+              className="mt-4"
+            >
               Request a Quote
             </Button>
-            <button
-              ref={toggleRef}
-              type="button"
-              className="text-brand-800 inline-flex size-10 items-center justify-center rounded-md md:hidden"
-              aria-expanded={open}
-              aria-controls="mobile-nav"
-              onClick={() => setOpenPath(open ? null : pathname)}
-            >
-              {open ? (
-                <X aria-hidden="true" className="size-5" />
-              ) : (
-                <Menu aria-hidden="true" className="size-5" />
-              )}
-              <span className="sr-only">
-                {open ? 'Close menu' : 'Open menu'}
-              </span>
-            </button>
-          </div>
+          </nav>
         </div>
-        <nav
-          id="mobile-nav"
-          aria-label="Mobile"
-          hidden={!open}
-          className="flex flex-col gap-1 border-t border-neutral-200 py-3 md:hidden"
-        >
-          {navLinks.map((link) => {
-            const current = pathname === link.to
-            return (
-              <Link
-                key={link.to}
-                to={link.to}
-                aria-current={current ? 'page' : undefined}
-                className={cn(
-                  'rounded-md px-2 py-2 text-base font-medium text-neutral-800',
-                  current && 'bg-brand-50 text-brand-800',
-                )}
-                onClick={() => setOpenPath(null)}
-              >
-                {link.label}
-              </Link>
-            )
-          })}
-        </nav>
-      </Container>
+      )}
     </header>
   )
 }

@@ -2,6 +2,10 @@ import type { ReactNode } from 'react'
 import { Container } from '@/components/ui/Container'
 import { cn } from '@/lib/cn'
 
+export function PillDivider() {
+  return <div className="sp-pill-divider" aria-hidden="true"><span className="bg-sp-navy" /><span className="bg-sp-blue" /><span className="bg-sp-teal" /><span className="bg-sp-cyan" /></div>
+}
+
 type SectionProps = {
   id?: string
   eyebrow?: string

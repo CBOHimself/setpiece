@@ -1,38 +1,36 @@
-import { Button } from '@/components/ui/Button'
-import { PlaceholderImage } from '@/components/ui/PlaceholderImage'
+import { Link } from 'react-router-dom'
 import type { Product } from '@/types'
 
-type ProductCardProps = {
-  product: Product
+const labels: Record<Product['category'], string> = {
+  ostomy: 'Ostomy',
+  continence: 'Continence',
+  'wound-care': 'Wound and Skin Care',
+  urology: 'Urology',
 }
-
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="bg-surface flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200">
-      <PlaceholderImage
-        src={product.image}
-        alt={product.imageAlt}
-        width={800}
-        height={600}
-        className="aspect-[4/3] w-full object-cover"
-      />
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-brand-800 text-lg font-semibold">{product.name}</h3>
-        <p className="text-muted mt-2 text-sm">{product.shortDescription}</p>
-        {product.sizes && product.sizes.length > 0 ? (
-          <p className="mt-3 text-sm text-neutral-700">
-            Options: {product.sizes.join(', ')}
-          </p>
-        ) : null}
-        <div className="mt-5">
-          <Button
-            to={`/contact?product=${product.slug}`}
-            variant="secondary"
-            size="sm"
-          >
-            Enquire
-          </Button>
+    <article className="flex h-full flex-col overflow-hidden rounded-sp-card border border-sp-border bg-white">
+      <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-sp-tint">
+        <div className="absolute -top-4 -right-5 h-24 w-14 rounded-full bg-sp-cyan/25" />
+        <div className="h-23 w-17 rounded-[22px] border-2 border-sp-border bg-white p-4 shadow-sm">
+          <div className="h-2 w-full rounded-full bg-sp-cyan" />
+          <div className="mt-3 h-9 rounded-lg bg-sp-tint" />
         </div>
+      </div>
+      <div className="flex flex-1 flex-col p-6">
+        <span className="w-fit rounded-full bg-sp-cyan px-3 py-1 text-[13px] font-bold text-sp-navy">
+          {labels[product.category]}
+        </span>
+        <h3 className="mt-4 text-xl text-sp-navy">{product.name}</h3>
+        <p className="mt-2 flex-1 text-[16px] text-sp-muted">
+          {product.shortDescription}
+        </p>
+        <Link
+          to={`/contact?product=${product.slug}`}
+          className="mt-5 inline-flex min-h-12 w-fit items-center rounded-full border border-sp-navy px-5 text-[16px] font-bold text-sp-navy hover:bg-sp-tint"
+        >
+          Enquire
+        </Link>
       </div>
     </article>
   )

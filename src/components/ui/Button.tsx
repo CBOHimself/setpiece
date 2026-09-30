@@ -2,16 +2,14 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { cn } from '@/lib/cn'
 
-type Variant = 'primary' | 'secondary' | 'ghost'
+type Variant = 'primary' | 'primary-on-dark' | 'secondary' | 'ghost'
 type Size = 'sm' | 'md' | 'lg'
-
 type SharedProps = {
   children: ReactNode
   variant?: Variant
   size?: Size
   className?: string
 }
-
 type ButtonAsButton = SharedProps & {
   to?: undefined
   type?: 'button' | 'submit' | 'reset'
@@ -19,7 +17,6 @@ type ButtonAsButton = SharedProps & {
   onClick?: () => void
   'aria-busy'?: boolean
 }
-
 type ButtonAsLink = SharedProps & {
   to: string
   type?: undefined
@@ -29,16 +26,15 @@ type ButtonAsLink = SharedProps & {
 }
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-accent-700 text-white hover:bg-accent-800',
-  secondary:
-    'border border-brand-800 bg-surface text-brand-800 hover:bg-brand-50',
-  ghost: 'text-brand-800 hover:bg-brand-50',
+  primary: 'bg-sp-blue text-white hover:bg-sp-navy',
+  'primary-on-dark': 'bg-sp-cyan text-sp-navy hover:bg-sp-cyan',
+  secondary: 'border border-sp-navy bg-white text-sp-navy hover:bg-sp-tint',
+  ghost: 'text-sp-blue hover:bg-sp-tint',
 }
-
 const sizes: Record<Size, string> = {
-  sm: 'px-3 py-2 text-sm',
-  md: 'px-4 py-2.5 text-sm',
-  lg: 'px-5 py-3 text-base',
+  sm: 'min-h-12 px-5 text-[16px]',
+  md: 'min-h-12 px-6 text-[17px]',
+  lg: 'min-h-13 px-7 text-[17px]',
 }
 
 export function Button({
@@ -53,21 +49,16 @@ export function Button({
   'aria-busy': ariaBusy,
 }: ButtonAsButton | ButtonAsLink) {
   const classes = cn(
-    'inline-flex items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap transition-colors disabled:cursor-not-allowed disabled:opacity-60',
+    'inline-flex min-h-12 items-center justify-center gap-2 rounded-full font-bold whitespace-nowrap transition-colors disabled:opacity-60',
     variants[variant],
     sizes[size],
     className,
   )
-
-  if (to) {
-    return (
-      <Link to={to} className={classes}>
-        {children}
-      </Link>
-    )
-  }
-
-  return (
+  return to ? (
+    <Link to={to} className={classes}>
+      {children}
+    </Link>
+  ) : (
     <button
       type={type}
       className={classes}

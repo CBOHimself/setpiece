@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { LoaderCircle } from 'lucide-react'
+import { Check, LoaderCircle } from 'lucide-react'
 import { useForm, type FieldErrors } from 'react-hook-form'
 import { siteConfig } from '@/config/site'
 import { categories } from '@/data/products'
@@ -27,7 +27,7 @@ const fieldOrder = [
 ] as const
 
 const inputClass =
-  'w-full rounded-md border border-neutral-300 bg-white px-3 py-2.5 text-base text-ink aria-invalid:border-accent-700'
+  'min-h-12 w-full rounded-full border border-sp-border bg-sp-tint px-5 py-3 text-[17px] text-sp-ink aria-invalid:border-sp-error focus:border-sp-teal'
 
 export function ContactForm({
   initialCategory,
@@ -92,9 +92,14 @@ export function ContactForm({
     return (
       <div
         role="status"
-        className="border-brand-200 bg-brand-50 rounded-lg border p-6"
+        className="border-brand-100 bg-brand-50 rounded-[28px] border p-7"
       >
-        <h2 className="text-brand-800 text-xl font-semibold">Enquiry sent</h2>
+        <span className="bg-accent-500 text-brand-800 flex size-13 items-center justify-center rounded-full">
+          <Check className="size-7" />
+        </span>
+        <h2 className="text-brand-800 mt-5 text-2xl">
+          Thank you, we will be in touch
+        </h2>
         <p className="text-muted mt-2">
           Thank you. We will reply using the contact details you provided.
         </p>
@@ -120,7 +125,7 @@ export function ContactForm({
       {status === 'error' ? (
         <div
           role="alert"
-          className="border-accent-700 bg-surface rounded-md border p-4 text-sm"
+          className="rounded-[20px] border border-[#B42318] bg-white p-4 text-[16px] text-[#B42318]"
         >
           <p>
             We could not send your enquiry. Please call us or send a WhatsApp
@@ -243,7 +248,7 @@ export function ContactForm({
           aria-required="true"
           aria-invalid={errors.message ? true : undefined}
           aria-describedby={errors.message ? 'message-error' : undefined}
-          className={inputClass}
+          className={`${inputClass} min-h-35 rounded-[20px]`}
           {...register('message')}
         />
       </Field>
@@ -262,7 +267,12 @@ export function ContactForm({
         />
       </div>
 
-      <Button type="submit" disabled={isSubmitting} aria-busy={isSubmitting}>
+      <Button
+        type="submit"
+        className="w-full"
+        disabled={isSubmitting}
+        aria-busy={isSubmitting}
+      >
         {isSubmitting ? (
           <LoaderCircle aria-hidden="true" className="size-4 animate-spin" />
         ) : null}
@@ -283,7 +293,10 @@ type FieldProps = {
 function Field({ id, label, required, error, children }: FieldProps) {
   return (
     <div>
-      <label htmlFor={id} className="text-brand-900 block text-sm font-medium">
+      <label
+        htmlFor={id}
+        className="text-brand-900 block text-[16px] font-bold"
+      >
         {label}
         {required ? (
           <>
@@ -300,7 +313,7 @@ function Field({ id, label, required, error, children }: FieldProps) {
         <p
           id={`${id}-error`}
           role="alert"
-          className="text-accent-700 mt-1.5 text-sm"
+          className="mt-1.5 text-[15px] text-[#B42318]"
         >
           {error}
         </p>
