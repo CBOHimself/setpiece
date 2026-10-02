@@ -47,10 +47,10 @@ export function AboutPage() {
             <div>
               <p className="eyebrow">About Setpiece</p>
               <h1 className="section-title mt-4 text-4xl lg:text-[56px]">
-                Who Setpiece is.
+                Who setpiece is.
               </h1>
               <p className="text-muted mt-6 max-w-xl text-lg">
-                Setpiece is a specialist intimate healthcare company in Ghana.
+                setpiece is a specialist intimate healthcare company in Ghana.
                 We supply thoughtful products and practical support to
                 hospitals, clinics, pharmacies, clinicians, and people managing
                 long-term health needs.
@@ -71,10 +71,11 @@ export function AboutPage() {
           <div className="grid items-center gap-12 lg:grid-cols-[.9fr_1.1fr]">
             <div className="flex min-h-82 items-center justify-center rounded-[40px] bg-white p-12">
               <img
-                src="/images/setpiece-logo.png"
+                src="/images/setpiece-symbol.png"
                 alt="Setpiece symbol"
-                className="max-w-[240px] object-cover object-left"
-                style={{ width: 240, height: 190 }}
+                width={260}
+                height={291}
+                className="max-w-[240px] object-contain"
               />
             </div>
             <div>

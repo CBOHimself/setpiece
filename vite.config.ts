@@ -109,6 +109,10 @@ export default defineConfig({
       '@': path.resolve(rootDir, 'src'),
     },
   },
+  server: {
+    // Allow Cloudflare Quick Tunnel hostnames (random *.trycloudflare.com).
+    allowedHosts: ['.trycloudflare.com'],
+  },
   build: {
     sourcemap: false,
     chunkSizeWarningLimit: 800,

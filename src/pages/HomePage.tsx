@@ -134,23 +134,14 @@ export function HomePage() {
                   </Button>
                 </div>
               </div>
-              <div className="relative min-h-[330px] overflow-hidden rounded-[28px] bg-[#dce8ee] p-7">
-                <div className="absolute inset-x-0 bottom-0 h-2/5 bg-white/45" />
-                <div className="relative mx-auto flex h-full max-w-md items-end justify-center gap-5">
-                  <div className="bg-brand-500 mb-4 w-36 rounded-t-[80px] px-5 pt-12 pb-8 text-center text-sm font-bold text-white">
-                    A caring
-                    <br />
-                    conversation
-                  </div>
-                  <div className="text-brand-800 w-40 rounded-t-[90px] bg-white px-5 pt-16 pb-8 text-center text-sm font-bold">
-                    Here for
-                    <br />
-                    everyday life
-                  </div>
-                </div>
-                <p className="text-brand-800 absolute bottom-5 left-6 text-sm font-semibold">
-                  Warm, practical support
-                </p>
+              <div className="relative min-h-[330px] overflow-hidden rounded-[28px]">
+                <img
+                  src="/images/healthcare-pro.jpeg"
+                  alt="A healthcare professional speaking with a patient during a consultation"
+                  width={1024}
+                  height={559}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -159,7 +150,7 @@ export function HomePage() {
           <Container className="border-brand-100 grid gap-5 border-y py-6 sm:grid-cols-3">
             <div className="flex items-center gap-3">
               <BadgeCheck className="text-accent-600 size-8" />
-              <p className="text-brand-800 text-[16px] font-bold">
+              <p className="text-brand-800 text-[16px] font-fbold">
                 Specialist healthcare supplies
               </p>
             </div>

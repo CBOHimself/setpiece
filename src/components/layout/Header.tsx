@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Logo } from '@/components/layout/Logo'
-import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 
 const links = [
@@ -14,11 +13,12 @@ const links = [
 
 export function Header() {
   const [open, setOpen] = useState(false)
+
   return (
     <header className="sticky top-0 z-40 h-20 border-b border-sp-border bg-white/95 backdrop-blur">
       <Container className="flex h-full items-center">
         <Link to="/" className="mr-auto" aria-label="Setpiece home">
-          <Logo alt="Setpiece" className="h-8 sm:h-10" />
+          <Logo alt="Setpiece" src="/images/setpiece-logo-no-bg.png" className="h-8 sm:h-10" />
         </Link>
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
           {links.map(([to, label]) => (
@@ -30,11 +30,9 @@ export function Header() {
               {label}
             </Link>
           ))}
-          <Button to="/contact" size="sm">
-            Request a Quote
-          </Button>
         </nav>
         <button
+          type="button"
           className="text-sp-navy inline-flex size-12 items-center justify-center rounded-full lg:hidden"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
@@ -56,13 +54,6 @@ export function Header() {
                 {label}
               </Link>
             ))}
-            <Button
-              to="/contact"
-              variant="primary-on-dark"
-              className="mt-4"
-            >
-              Request a Quote
-            </Button>
           </nav>
         </div>
       )}

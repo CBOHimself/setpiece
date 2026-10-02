@@ -9,9 +9,11 @@ export function Footer() {
       <div className="bg-sp-navy mx-auto max-w-[1344px] rounded-sp-panel text-white">
         <Container className="grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-[1.2fr_.8fr_.8fr_1fr]">
           <div>
-            <div className="inline-block rounded-md bg-white px-2 py-2">
-              <Logo alt="Setpiece" className="h-8 sm:h-9" />
-            </div>
+            <Logo
+              alt="Setpiece"
+              src="/images/setpiece-logo-white-mono.png"
+              className="h-8 sm:h-9"
+            />
             <p className="text-sp-cyan mt-5 text-lg">
               Your Healthcare Partner
             </p>
@@ -39,15 +41,15 @@ export function Footer() {
             <ul className="mt-4 space-y-3 text-[16px] text-white/75">
               <li className="flex gap-2">
                 <Mail className="text-sp-cyan mt-1 size-4" />
-                hello@setpiecegh.com
+                admin@setpiecegh.com
               </li>
               <li className="flex gap-2">
                 <Phone className="text-sp-cyan mt-1 size-4" />
-                +233 00 000 0000
+                +233 534 727 954
               </li>
               <li className="flex gap-2">
                 <MapPin className="text-sp-cyan mt-1 size-4" />
-                Accra, Ghana
+                Jupiter House, Abofu 1st Junction. Accra, Ghana
               </li>
             </ul>
           </div>
