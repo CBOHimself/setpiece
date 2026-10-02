@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Mail, MapPin, Phone, AtSign, MessageCircle } from 'lucide-react'
+import { formatAddress, siteConfig } from '@/config/site'
 import { Logo } from '@/components/layout/Logo'
 import { Container } from '@/components/ui/Container'
 
@@ -40,16 +41,26 @@ export function Footer() {
             <h2 className="text-lg text-white">Get in touch</h2>
             <ul className="mt-4 space-y-3 text-[16px] text-white/75">
               <li className="flex gap-2">
-                <Mail className="text-sp-cyan mt-1 size-4" />
-                admin@setpiecegh.com
+                <Mail className="text-sp-cyan mt-1 size-4 shrink-0" />
+                <a
+                  className="break-all underline-offset-2 hover:underline"
+                  href={`mailto:${siteConfig.email}`}
+                >
+                  {siteConfig.email}
+                </a>
               </li>
               <li className="flex gap-2">
-                <Phone className="text-sp-cyan mt-1 size-4" />
-                +233 534 727 954
+                <Phone className="text-sp-cyan mt-1 size-4 shrink-0" />
+                <a
+                  className="underline-offset-2 hover:underline"
+                  href={`tel:${siteConfig.phoneTel}`}
+                >
+                  {siteConfig.phoneDisplay}
+                </a>
               </li>
               <li className="flex gap-2">
-                <MapPin className="text-sp-cyan mt-1 size-4" />
-                Jupiter House, Abofu 1st Junction. Accra, Ghana
+                <MapPin className="text-sp-cyan mt-1 size-4 shrink-0" />
+                {formatAddress()}
               </li>
             </ul>
           </div>
@@ -58,15 +69,17 @@ export function Footer() {
             <div className="mt-4 flex gap-3">
               <a
                 className="flex size-11 items-center justify-center rounded-full bg-white/10"
-                href="#contact"
+                href={`mailto:${siteConfig.email}`}
                 aria-label="Email us"
               >
                 <AtSign className="size-5" />
               </a>
               <a
                 className="flex size-11 items-center justify-center rounded-full bg-white/10"
-                href="#contact"
-                aria-label="Message us"
+                href={`https://wa.me/${siteConfig.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Message us on WhatsApp"
               >
                 <MessageCircle className="size-5" />
               </a>

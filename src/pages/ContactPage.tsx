@@ -54,7 +54,7 @@ export function ContactPage() {
               />
             </div>
             <aside className="bg-brand-800 rounded-[28px] p-8 text-white">
-              <p className="eyebrow !text-accent-500 before:!bg-accent-500">
+              <p className="eyebrow text-sp-teal">
                 Contact details
               </p>
               <h2 className="mt-5 text-3xl text-white">
@@ -108,7 +108,7 @@ export function ContactPage() {
                 <p className="text-brand-800 mt-3 text-lg font-bold">
                   Setpiece, Accra
                 </p>
-                <p className="text-muted mt-1 text-[16px]">Map placeholder</p>
+                <p className="text-muted mt-1 text-[16px]">{formatAddress()}</p>
               </div>
             </div>
           </div>

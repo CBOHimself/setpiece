@@ -106,7 +106,7 @@ export function HomePage() {
             <div className="absolute -bottom-24 -left-12 h-72 w-28 rotate-90 rounded-full bg-white/8" />
             <div className="relative grid items-center gap-12 lg:grid-cols-[1.02fr_.98fr]">
               <div>
-                <p className="eyebrow !text-accent-500 before:!bg-accent-500">
+                <p className="eyebrow text-sp-teal">
                   Your Healthcare Partner
                 </p>
                 <h1 className="mt-5 max-w-xl text-4xl leading-[1.04] text-white sm:text-5xl lg:text-[56px]">
@@ -328,7 +328,7 @@ export function HomePage() {
         <section className="px-4 py-12 sm:px-6">
           <div className="bg-brand-800 mx-auto flex max-w-[1344px] flex-col justify-between gap-8 rounded-[40px] px-8 py-12 text-white md:flex-row md:items-center lg:px-16">
             <div>
-              <p className="eyebrow !text-accent-500 before:!bg-accent-500">
+              <p className="eyebrow text-sp-teal">
                 Let’s talk
               </p>
               <h2 className="mt-4 text-3xl text-white lg:text-[40px]">

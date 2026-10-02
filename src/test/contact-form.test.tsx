@@ -95,7 +95,7 @@ describe('Contact form', () => {
     const alert = await screen.findByRole('alert')
     expect(alert).toHaveTextContent('could not send your enquiry')
     expect(
-      within(alert).getByRole('link', { name: '+233 00 000 0000' }),
+      within(alert).getByRole('link', { name: '+233 534 727 954' }),
     ).toBeInTheDocument()
     expect(
       within(alert).getByRole('link', { name: /chat on whatsapp/i }),

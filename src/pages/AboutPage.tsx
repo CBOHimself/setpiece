@@ -101,7 +101,7 @@ export function AboutPage() {
         <Container>
           <div className="grid gap-5 md:grid-cols-2">
             <article className="bg-brand-800 rounded-[28px] p-8 text-white">
-              <p className="eyebrow !text-accent-500 before:!bg-accent-500">
+              <p className="eyebrow text-sp-teal">
                 Our mission
               </p>
               <h2 className="mt-5 text-3xl text-white">

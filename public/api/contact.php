@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 // TODO: set this to the inbox that should receive enquiries.
-const ADMIN_EMAIL = 'hello@setpiecegh.com';
+const ADMIN_EMAIL = 'admin@setpiecegh.com';
 
 // TODO: confirm this mailbox exists on setpiecegh.com before go-live.
 const FROM_EMAIL = 'no-reply@setpiecegh.com';

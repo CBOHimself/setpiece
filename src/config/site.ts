@@ -1,19 +1,17 @@
 import type { SiteAddress, SiteConfig } from '@/types'
 
-// TODO(content): replace every value below with the confirmed company details.
-
 export const siteConfig = {
   name: 'Set Piece',
   url: 'https://www.setpiecegh.com',
   tagline: 'Wholesale Coloplast products for healthcare providers in Ghana',
   description:
     'Set Piece is a Ghana-based wholesale supplier of Coloplast ostomy, continence, wound care, and urology products.',
-  email: 'hello@setpiecegh.com',
-  phoneDisplay: '+233 00 000 0000',
-  phoneTel: '+233000000000',
-  whatsapp: '233000000000',
+  email: 'admin@setpiecegh.com',
+  phoneDisplay: '+233 534 727 954',
+  phoneTel: '+233534727954',
+  whatsapp: '233534727954',
   address: {
-    street: 'Street address to be confirmed',
+    street: 'Jupiter House, Abofu 1st Junction',
     city: 'Accra',
     region: 'Greater Accra',
     country: 'Ghana',
@@ -31,9 +29,7 @@ export const siteConfig = {
 export function formatAddress(
   address: SiteAddress = siteConfig.address,
 ): string {
-  return [address.street, address.city, address.region, address.country].join(
-    ', ',
-  )
+  return `${address.street}. ${address.city}, ${address.country}`
 }
 
 export function whatsappHref(message?: string): string {

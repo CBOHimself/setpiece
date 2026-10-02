@@ -248,7 +248,7 @@ export function ContactForm({
           aria-required="true"
           aria-invalid={errors.message ? true : undefined}
           aria-describedby={errors.message ? 'message-error' : undefined}
-          className={`${inputClass} min-h-35 rounded-[20px]`}
+          className="border-sp-border bg-sp-tint text-sp-ink aria-invalid:border-sp-error focus:border-sp-teal min-h-35 w-full rounded-xl border px-5 py-3 text-[17px]"
           {...register('message')}
         />
       </Field>

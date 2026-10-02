@@ -119,7 +119,7 @@ export function NotFoundPage() {
               Back to home
             </Button>
             <a
-              href="mailto:hello@setpiecegh.com"
+              href="mailto:admin@setpiecegh.com"
               className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white px-5 text-[17px] font-bold"
             >
               <Mail className="size-5" />
