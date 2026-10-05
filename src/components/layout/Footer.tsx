@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { Mail, MapPin, Phone, AtSign, MessageCircle } from 'lucide-react'
+import { Mail, MapPin, Phone, AtSign } from 'lucide-react'
 import { formatAddress, siteConfig } from '@/config/site'
+import { legalDocuments } from '@/data/legal'
 import { Logo } from '@/components/layout/Logo'
 import { Container } from '@/components/ui/Container'
 
@@ -74,24 +75,29 @@ export function Footer() {
               >
                 <AtSign className="size-5" />
               </a>
-              <a
-                className="flex size-11 items-center justify-center rounded-full bg-white/10"
-                href={`https://wa.me/${siteConfig.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Message us on WhatsApp"
-              >
-                <MessageCircle className="size-5" />
-              </a>
             </div>
             <p className="mt-8 text-[15px] text-white/65">
-              Authorised distributor of Coloplast
+              Authorised distributor of SpeediCath by Coloplast
             </p>
           </div>
         </Container>
         <div className="border-t border-white/15">
-          <Container className="py-4 text-[14px] text-white/60">
-            © {new Date().getFullYear()} Setpiece. All rights reserved.
+          <Container className="flex flex-col gap-3 py-4 text-[14px] text-white/60 md:flex-row md:items-center md:justify-between">
+            <p>© {new Date().getFullYear()} Setpiece. All rights reserved.</p>
+            <nav aria-label="Legal">
+              <ul className="flex flex-wrap gap-x-5 gap-y-2">
+                {legalDocuments.map((doc) => (
+                  <li key={doc.slug}>
+                    <Link
+                      className="underline-offset-2 hover:underline"
+                      to={doc.path}
+                    >
+                      {doc.navLabel}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </Container>
         </div>
       </div>

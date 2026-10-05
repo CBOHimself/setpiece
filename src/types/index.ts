@@ -88,3 +88,30 @@ export type ContactFormValues = {
   message: string
   companyWebsite: string
 }
+
+export type LegalSlug =
+  | 'privacy'
+  | 'terms'
+  | 'cookies'
+  | 'disclaimer'
+  | 'accessibility'
+
+// Inline links inside text use [label](href) syntax. Hrefs starting with "/"
+// become router links; mailto:, tel: and https: hrefs become plain anchors.
+export type LegalBlock = string | { list: readonly string[] }
+
+export type LegalSection = {
+  id: string
+  heading: string
+  blocks: readonly LegalBlock[]
+}
+
+export type LegalDocument = {
+  slug: LegalSlug
+  path: string
+  title: string
+  navLabel: string
+  description: string
+  intro: string
+  sections: readonly LegalSection[]
+}

@@ -11,8 +11,7 @@ import { Seo } from '@/components/seo/Seo'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 
-const icons = [Pill, HeartHandshake, Stethoscope, ShieldCheck]
-const short = ['Ostomy', 'Continence', 'Urology', 'Wound and Skin Care']
+const icons = [Pill, HeartHandshake, ShieldCheck, Stethoscope]
 
 function Bars() {
   return (
@@ -58,13 +57,13 @@ export function ProductsPage() {
             >
               All
             </a>
-            {categories.map((c, i) => (
+            {categories.map((c) => (
               <a
                 key={c.slug}
                 href={`#${c.slug}`}
                 className="bg-brand-50 text-brand-800 min-h-12 rounded-full px-5 py-3 text-[16px] font-bold whitespace-nowrap"
               >
-                {short[i]}
+                {c.name}
               </a>
             ))}
           </nav>
@@ -87,9 +86,9 @@ export function ProductsPage() {
                     <Icon className="size-7" />
                   </div>
                   <div>
-                    <p className="eyebrow">{short[i]}</p>
+                    <p className="eyebrow">{c.name}</p>
                     <h2 className="text-brand-800 mt-3 text-3xl lg:text-[40px]">
-                      {short[i]}
+                      {c.name}
                     </h2>
                     <p className="text-muted mt-3 max-w-2xl text-lg">
                       {c.shortDescription} Practical choices and respectful

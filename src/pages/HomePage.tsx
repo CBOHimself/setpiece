@@ -10,6 +10,7 @@ import {
   UsersRound,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { categories, products } from '@/data/products'
 import { Seo } from '@/components/seo/Seo'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
@@ -42,15 +43,6 @@ const care = [
   },
 ]
 
-const products = [
-  ['Ostomy', 'Two-piece ostomy pouching system'],
-  ['Continence', 'Intermittent catheter'],
-  ['Wound and Skin Care', 'Hydrocolloid dressing'],
-  ['Urology', 'Urinary drainage bag'],
-  ['Ostomy', 'Skin barrier accessories'],
-  ['Continence', 'Compact urine collection bag'],
-]
-
 const support = [
   [
     'Patients and caregivers',
@@ -78,19 +70,9 @@ const four = [
 
 function Bars() { return <PillDivider /> }
 
-function ProductVisual({ i }: { i: number }) {
-  return (
-    <div className="bg-brand-50 relative flex aspect-[4/3] items-center justify-center overflow-hidden">
-      <div className="bg-accent-500/25 absolute -top-8 -right-10 h-32 w-20 rounded-full" />
-      <div
-        className={`border-brand-100 relative h-24 w-20 rounded-[22px] border-2 bg-white shadow-sm ${i % 3 === 1 ? 'w-14 rounded-full' : ''}`}
-      >
-        <div className="bg-accent-500 mx-auto mt-4 h-2 w-9 rounded-full" />
-        <div className="bg-brand-50 mx-auto mt-3 h-9 w-12 rounded-xl" />
-      </div>
-    </div>
-  )
-}
+const categoryName = Object.fromEntries(
+  categories.map((category) => [category.slug, category.name]),
+)
 
 export function HomePage() {
   return (
@@ -249,24 +231,31 @@ export function HomePage() {
               </Button>
             </div>
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {products.map(([area, name], i) => (
+              {products.slice(0, 6).map((product) => (
                 <article
-                  key={name}
+                  key={product.id}
                   className="border-brand-100 overflow-hidden rounded-[28px] border bg-white"
                 >
-                  <ProductVisual i={i} />
+                  <div className="bg-brand-50 relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={product.image}
+                      alt={product.imageAlt}
+                      width={800}
+                      height={600}
+                      className="absolute inset-0 h-full w-full object-contain p-4"
+                    />
+                  </div>
                   <div className="p-6">
                     <span className="bg-accent-500 text-brand-800 rounded-full px-3 py-1 text-[13px] font-bold">
-                      {area}
+                      {categoryName[product.category]}
                     </span>
-                    <h3 className="text-brand-800 mt-4 text-xl">{name}</h3>
-                    <p className="text-muted mt-2 min-h-13 text-[16px]">
-                      Practical support designed for a more comfortable everyday
-                      routine.
+                    <h3 className="text-brand-800 mt-4 text-xl">{product.name}</h3>
+                    <p className="text-muted mt-2 line-clamp-4 min-h-13 text-[16px]">
+                      {product.shortDescription}
                     </p>
                     <Link
                       className="border-brand-800 text-brand-800 hover:bg-brand-50 mt-5 inline-flex min-h-12 items-center rounded-full border px-5 text-[16px] font-bold"
-                      to="/contact"
+                      to={`/contact?product=${product.slug}`}
                     >
                       Enquire
                     </Link>
@@ -306,11 +295,14 @@ export function HomePage() {
         <section className="px-4 py-16 sm:px-6">
           <div className="bg-brand-100 mx-auto grid max-w-[1344px] overflow-hidden rounded-[40px] md:grid-cols-2">
             <div className="bg-brand-50 min-h-72 p-8">
-              <div className="relative h-full overflow-hidden rounded-[28px] bg-white">
-                <div className="absolute right-0 bottom-0 left-0 h-1/2 bg-[#dce8ee]" />
-                <div className="bg-brand-500 absolute top-12 left-12 h-44 w-24 rounded-t-full" />
-                <div className="bg-accent-600 absolute top-18 left-31 h-38 w-20 rounded-t-full" />
-                <div className="bg-accent-500/35 absolute top-10 right-10 h-24 w-24 rounded-full" />
+              <div className="relative aspect-4/3 overflow-hidden rounded-[28px]">
+                <img
+                  src="/images/pharmacist-and-customer.jpeg"
+                  alt="A pharmacist handing a box to a customer across the pharmacy counter"
+                  width={1200}
+                  height={896}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
               </div>
             </div>
             <div className="flex flex-col justify-center p-9 lg:p-14">

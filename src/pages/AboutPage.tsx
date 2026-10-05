@@ -57,11 +57,14 @@ export function AboutPage() {
               </p>
               <Bars />
             </div>
-            <div className="bg-brand-50 relative min-h-72 overflow-hidden rounded-[28px]">
-              <div className="bg-brand-100 absolute bottom-0 left-0 h-1/2 w-full" />
-              <div className="bg-brand-500 absolute bottom-0 left-14 h-56 w-28 rounded-t-full" />
-              <div className="bg-accent-600 absolute bottom-0 left-43 h-44 w-24 rounded-t-full" />
-              <div className="bg-accent-500/40 absolute top-12 right-12 h-28 w-28 rounded-full" />
+            <div className="relative aspect-4/3 overflow-hidden rounded-[28px]">
+              <img
+                src="/images/employees-warehouse.jpeg"
+                alt="A clinician and a colleague reviewing supplies in a medical storeroom"
+                width={1200}
+                height={896}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
             </div>
           </div>
         </Container>

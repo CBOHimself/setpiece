@@ -2,9 +2,9 @@ import { useState, type ReactNode } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Check, LoaderCircle } from 'lucide-react'
 import { useForm, type FieldErrors } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 import { siteConfig } from '@/config/site'
 import { categories } from '@/data/products'
-import { WhatsAppButton } from '@/components/contact/WhatsAppButton'
 import { Button } from '@/components/ui/Button'
 import { contactSchema } from '@/lib/validation'
 import type { ContactFormValues } from '@/types'
@@ -128,8 +128,7 @@ export function ContactForm({
           className="rounded-[20px] border border-[#B42318] bg-white p-4 text-[16px] text-[#B42318]"
         >
           <p>
-            We could not send your enquiry. Please call us or send a WhatsApp
-            message instead.
+            We could not send your enquiry. Please call us instead.
           </p>
           <p className="mt-2">
             <a
@@ -139,9 +138,6 @@ export function ContactForm({
               {siteConfig.phoneDisplay}
             </a>
           </p>
-          <div className="mt-3">
-            <WhatsAppButton />
-          </div>
         </div>
       ) : null}
 
@@ -278,6 +274,14 @@ export function ContactForm({
         ) : null}
         {isSubmitting ? 'Sending enquiry' : 'Send enquiry'}
       </Button>
+      <p className="text-sp-muted text-[14px]">
+        By sending this enquiry you agree that we may use your details to reply
+        to you, as described in our{' '}
+        <Link className="text-sp-blue underline" to="/privacy">
+          Privacy Policy
+        </Link>
+        . Please do not include patient names or health details.
+      </p>
     </form>
   )
 }

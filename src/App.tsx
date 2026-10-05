@@ -21,6 +21,11 @@ const ContactPage = lazy(() =>
     default: module.ContactPage,
   })),
 )
+const LegalPage = lazy(() =>
+  import('@/pages/LegalPage').then((module) => ({
+    default: module.LegalPage,
+  })),
+)
 const NotFoundPage = lazy(() =>
   import('@/pages/NotFoundPage').then((module) => ({
     default: module.NotFoundPage,
@@ -36,6 +41,14 @@ export function App() {
         <Route path="about" element={<AboutPage />} />
         <Route path="faq" element={<FaqPage />} />
         <Route path="contact" element={<ContactPage />} />
+        <Route path="privacy" element={<LegalPage slug="privacy" />} />
+        <Route path="terms" element={<LegalPage slug="terms" />} />
+        <Route path="cookies" element={<LegalPage slug="cookies" />} />
+        <Route path="disclaimer" element={<LegalPage slug="disclaimer" />} />
+        <Route
+          path="accessibility"
+          element={<LegalPage slug="accessibility" />}
+        />
         <Route path="components" element={<NotFoundPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

@@ -1,4 +1,4 @@
-import { Mail, MessageCircle } from 'lucide-react'
+import { Mail } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
 import { Seo } from '@/components/seo/Seo'
 import { Button } from '@/components/ui/Button'
@@ -124,13 +124,6 @@ export function NotFoundPage() {
             >
               <Mail className="size-5" />
               Email us
-            </a>
-            <a
-              href="#whatsapp"
-              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white px-5 text-[17px] font-bold"
-            >
-              <MessageCircle className="size-5" />
-              WhatsApp
             </a>
           </div>
         </Container>

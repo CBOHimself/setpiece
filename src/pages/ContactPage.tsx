@@ -1,4 +1,4 @@
-import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { Clock, Mail, MapPin, Phone } from 'lucide-react'
 import { useSearchParams } from 'react-router-dom'
 import { formatAddress, siteConfig } from '@/config/site'
 import { products } from '@/data/products'
@@ -80,21 +80,6 @@ export function ContactPage() {
                   {siteConfig.hoursDisplay}
                 </li>
               </ul>
-              <a
-                href={`https://wa.me/${siteConfig.whatsapp}`}
-                className="bg-accent-500 text-brand-800 mt-9 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-5 text-[17px] font-bold"
-              >
-                <MessageCircle className="size-5" />
-                Chat on WhatsApp
-              </a>
-              <div className="mt-7 flex gap-3">
-                <span className="flex size-11 items-center justify-center rounded-full bg-white/10">
-                  in
-                </span>
-                <span className="flex size-11 items-center justify-center rounded-full bg-white/10">
-                  f
-                </span>
-              </div>
             </aside>
           </div>
         </Container>

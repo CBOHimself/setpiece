@@ -97,8 +97,5 @@ describe('Contact form', () => {
     expect(
       within(alert).getByRole('link', { name: '+233 534 727 954' }),
     ).toBeInTheDocument()
-    expect(
-      within(alert).getByRole('link', { name: /chat on whatsapp/i }),
-    ).toBeInTheDocument()
   })
 })

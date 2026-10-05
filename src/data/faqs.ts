@@ -29,7 +29,7 @@ export const faqs: readonly Faq[] = [
     group: 'Ordering',
     question: 'How do I request a quote?',
     answer:
-      'Use the enquiry form, call the published phone number, or send a WhatsApp message. Include the product, quantity, and your organisation so the reply is useful.',
+      'Use the enquiry form or call the published phone number. Include the product, quantity, and your organisation so the reply is useful.',
   },
   {
     id: 'delivery',

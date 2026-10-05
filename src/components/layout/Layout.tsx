@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
+import { legalPaths } from '@/data/legal'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { PageFallback } from '@/components/ui/PageFallback'
@@ -7,7 +8,15 @@ import { Suspense } from 'react'
 
 export function Layout() {
   const { pathname, hash } = useLocation()
-  const isRecoveryPage = !['/', '/products', '/about', '/faq', '/contact', '/components'].includes(pathname)
+  const isRecoveryPage = ![
+    '/',
+    '/products',
+    '/about',
+    '/faq',
+    '/contact',
+    '/components',
+    ...legalPaths,
+  ].includes(pathname)
 
   useEffect(() => {
     if (hash) return
