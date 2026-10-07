@@ -5,7 +5,7 @@ declare(strict_types=1);
 const ADMIN_EMAIL = 'admin@setpiecegh.com';
 
 // TODO: confirm this mailbox exists on setpiecegh.com before go-live.
-const FROM_EMAIL = 'no-reply@setpiecegh.com';
+const FROM_EMAIL = 'admin@setpiecegh.com';
 
 const ALLOWED_ORIGIN = 'https://www.setpiecegh.com';
 const MAX_BODY_BYTES = 20000;

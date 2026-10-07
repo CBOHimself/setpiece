@@ -4,37 +4,72 @@ import type { Product, ProductCategory } from '@/types'
 // (as shown on products.coloplast.co.za), adapted into Set Piece's catalogue.
 // Photo convention: /images/products/<slug>.webp at 800×600.
 
-const placeholderImage = '/images/placeholder-product.svg'
+// HIDDEN (not in stock): only needed by the hidden products below. Restore with them.
+// const placeholderImage = '/images/placeholder-product.svg'
 
 export const categories: readonly ProductCategory[] = [
-  {
-    slug: 'ostomy',
-    name: 'Ostomy',
-    shortDescription:
-      'Pouching systems and supporting products for ostomy care.',
-    icon: 'CircleDot',
-  },
+  // HIDDEN (no stock at the moment) - uncomment to restore
+  // {
+  //   slug: 'ostomy',
+  //   name: 'Ostomy',
+  //   shortDescription:
+  //     'Pouching systems and supporting products for ostomy care.',
+  //   icon: 'CircleDot',
+  // },
   {
     slug: 'continence',
     name: 'Continence (Bladder & Bowel)',
     shortDescription: 'Products for bladder and bowel management.',
     icon: 'Droplets',
   },
-  {
-    slug: 'wound-care',
-    name: 'Wound Care',
-    shortDescription: 'Dressings and skin-protection products for wound care.',
-    icon: 'Bandage',
-  },
-  {
-    slug: 'urology',
-    name: 'Urology',
-    shortDescription: 'Catheters and drainage products for urology.',
-    icon: 'Stethoscope',
-  },
+  // HIDDEN (no stock at the moment) - uncomment to restore
+  // {
+  //   slug: 'wound-care',
+  //   name: 'Wound Care',
+  //   shortDescription: 'Dressings and skin-protection products for wound care.',
+  //   icon: 'Bandage',
+  // },
+  // HIDDEN (no stock at the moment) - uncomment to restore
+  // {
+  //   slug: 'urology',
+  //   name: 'Urology',
+  //   shortDescription: 'Catheters and drainage products for urology.',
+  //   icon: 'Stethoscope',
+  // },
 ]
 
 export const products: readonly Product[] = [
+  // IN STOCK. Content from the Coloplast South Africa product pages:
+  // https://products.coloplast.co.za/coloplast/continence-care/speedicath/speedicath-standard/speedicath-female/
+  // https://products.coloplast.co.za/coloplast/continence-care/speedicath/speedicath-standard/speedicath-standard-male/speedicath-male/
+  // TODO(image): swap in dedicated Female / Male photos once supplied or approved by Coloplast.
+  {
+    id: 'speedicath-female',
+    slug: 'speedicath-female',
+    name: 'SpeediCath® Female',
+    category: 'continence',
+    shortDescription:
+      'The proven and reliable standard catheter. SpeediCath is the instantly ready-to-use catheter, simple and intuitive to use. Its hydrophilic coating, with polished eyelets, is designed to reduce friction and increase comfort, and needs no added water or lubrication. A ring-pull opening makes the pack easy to open, an adhesive dot keeps the catheter where it is placed, and the catheter is PVC- and phthalate-free.',
+    image: '/images/products/speedicath-intermittent-catheter.webp',
+    imageAlt: 'SpeediCath hydrophilic intermittent catheter, ready to use',
+  },
+  {
+    id: 'speedicath-male',
+    slug: 'speedicath-male',
+    name: 'SpeediCath® Male',
+    category: 'continence',
+    shortDescription:
+      'The proven and reliable standard catheter. SpeediCath is the instantly ready-to-use catheter for safe, convenient and simple catheterisation. Its hydrophilic coating, with polished eyelets, is designed to reduce friction and increase comfort, and needs no added water or lubrication. A ring-pull opening makes the pack easy to open, an adhesive dot keeps the catheter securely in place, and the catheter is PVC- and phthalate-free. Please read the Instructions for Use before use.',
+    image: '/images/products/speedicath-intermittent-catheter.webp',
+    imageAlt: 'SpeediCath hydrophilic intermittent catheter, ready to use',
+  },
+
+  /*
+  HIDDEN: the client only wants products currently in stock on the site.
+  These entries are kept (not deleted) so they can be restored later: move an
+  entry out of this comment block (and restore its category in `categories`
+  above and `placeholderImage` if needed) and it reappears everywhere.
+
   {
     id: 'ostomy-one-piece',
     slug: 'one-piece-ostomy-pouch',
@@ -178,6 +213,7 @@ export const products: readonly Product[] = [
     imageAlt: 'SpeediCath hydrophilic intermittent catheter, ready to use',
     sizes: ['CH 6–CH 16, Standard and Compact lengths'],
   },
+  */
 ]
 
 export function productsByCategory(slug: Product['category']): Product[] {
