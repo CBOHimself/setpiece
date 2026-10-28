@@ -50,7 +50,7 @@ export const products: readonly Product[] = [
     category: 'continence',
     shortDescription:
       'The proven and reliable standard catheter. SpeediCath is the instantly ready-to-use catheter, simple and intuitive to use. Its hydrophilic coating, with polished eyelets, is designed to reduce friction and increase comfort, and needs no added water or lubrication. A ring-pull opening makes the pack easy to open, an adhesive dot keeps the catheter where it is placed, and the catheter is PVC- and phthalate-free.',
-    image: '/images/products/speedicath-intermittent-catheter.webp',
+    image: '/images/products/speedicath-compact-female-standard.webp',
     imageAlt: 'SpeediCath hydrophilic intermittent catheter, ready to use',
   },
   {
